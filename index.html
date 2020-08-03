@@ -9,8 +9,8 @@
 		.link{display: block; position: absolute; top: 35px; left: 0; background: white; padding: 10px; transform: rotate(90deg); transform-origin: 35px 0px; display: block}
 	</style>
 	<script>
-		const innerURL = 'https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F{{id}}%2F';
-		const fb='<iframe src="https://www.facebook.com/plugins/video.php?href=' + innerURL + '&show_text=false&width='+window.innerWidth+'&height='+window.innerHeight+'&mute=0" width="'+window.innerWidth+'" height="'+window.innerHeight+'" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>';
+		const watchURL = 'https://www.facebook.com/watch/?ref=external&v={{id}}';
+		const fb='<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F{{id}}%2F&show_text=false&width='+window.innerWidth+'&height='+window.innerHeight+'&mute=0" width="'+window.innerWidth+'" height="'+window.innerHeight+'" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>';
 		const randomIntFromInterval=(min,max)=>Math.floor(Math.random()*(max-min+1)+min);
 		fetch( 'links.json' )
 		.then( res => res.json() )
@@ -20,12 +20,7 @@
 			let id=splittedEp[splittedEp.length-2];
 			if(isNaN(id)){id=splittedEp[splittedEp.length-3];}
 			let fbIframe=fb.replace("{{id}}",id);
-			document.body.innerHTML+=fbIframe + '<div class="link">' +
-				innerURL
-					.replace("{{id}}",id)
-					.replace(/%3A/g,':')
-					.replace(/%2F/g,'/')
-			+ '</div>';
+			document.body.innerHTML+=fbIframe + '<div class="link"><a href="'+watchURL.replace("{{id}}",id)+'" target="_blank">Link</a>';
 		});
 	</script>
 </head>
