@@ -19,8 +19,7 @@
 			let id=splittedEp[splittedEp.length-2];
 			if(isNaN(id)){id=splittedEp[splittedEp.length-3];}
 			let fbIframe=fb.replace("{{id}}",id);
-			document.body.innerHTML+=fbIframe;
-			document.body.appendChild(document.createComment( innerURL.replace("{{id}}",id) ));
+			document.body.innerHTML+=fbIframe + '<div style="display:none">' + innerURL.replace("{{id}}",id) + '</div>';
 		});
 	</script>
 </head>
