@@ -6,6 +6,7 @@
 		body{margin:0 }
 		body *{display:none }
 		iframe{display:block;width:100 %;height:100 % }
+		.link{display: block; position: absolute; top: 35px; left: 0; background: white; padding: 10px; transform: rotate(90deg); transform-origin: 35px 0px; display: block}
 	</style>
 	<script>
 		const innerURL = 'https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F{{id}}%2F';
@@ -19,7 +20,7 @@
 			let id=splittedEp[splittedEp.length-2];
 			if(isNaN(id)){id=splittedEp[splittedEp.length-3];}
 			let fbIframe=fb.replace("{{id}}",id);
-			document.body.innerHTML+=fbIframe + '<div style="display:none">' +
+			document.body.innerHTML+=fbIframe + '<div class="link">' +
 				innerURL
 					.replace("{{id}}",id)
 					.replace(/%3A/g,':')
