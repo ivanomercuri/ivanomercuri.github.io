@@ -10,6 +10,7 @@
 		.link a{display:block}
 	</style>
 	<script>
+		let iframeObject;
 		const watchURL = 'https://www.facebook.com/watch/?ref=external&v={{id}}';
 		const fb='<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook%2Fvideos%2F{{id}}%2F&show_text=false&width='+window.innerWidth+'&height='+window.innerHeight+'&mute=0" width="'+window.innerWidth+'" height="'+window.innerHeight+'" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>';
 		const randomIntFromInterval=(min,max)=>Math.floor(Math.random()*(max-min+1)+min);
@@ -22,6 +23,7 @@
 			if(isNaN(id)){id=splittedEp[splittedEp.length-3];}
 			let fbIframe=fb.replace("{{id}}",id);
 			document.body.innerHTML+=fbIframe + '<div class="link"><a href="'+watchURL.replace("{{id}}",id)+'" target="_blank">Link</a>';
+			iframeObject = document.querySelector( "iframe" );
 		});
 	</script>
 </head>
